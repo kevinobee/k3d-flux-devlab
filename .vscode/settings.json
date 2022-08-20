@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
+        "conntrack",
+        "kube",
         "kubeconfig",
         "Loadbalancer",
         "servicelb",

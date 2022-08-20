@@ -23,6 +23,12 @@ options:
       - arg: --no-deploy=traefik,servicelb,metrics-server
         nodeFilters:
           - server:*
+      - arg: --kube-proxy-arg=conntrack-max-per-core=0
+        nodeFilters:
+          - server:*
+      - arg: --kube-proxy-arg=conntrack-max-per-core=0
+        nodeFilters:
+          - agent:*
   kubeconfig:
     updateDefaultKubeconfig: true
     switchCurrentContext: true
