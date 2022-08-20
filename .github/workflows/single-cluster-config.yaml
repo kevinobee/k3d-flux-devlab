@@ -2,14 +2,14 @@ name: Single cluster on default network with config
 
 on:
   [workflow_dispatch, push]
-  
+
 jobs:
   k3d-single-cluster-demo:
     name: Single cluster on default network with config
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: ./
+      - uses: AbsaOSS/k3d-action@v2
         name: "Create single k3d Cluster"
         with:
           cluster-name: "test-cluster-1"
