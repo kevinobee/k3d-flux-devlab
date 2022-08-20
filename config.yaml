@@ -17,12 +17,8 @@ options:
   k3d:
     wait: true
     timeout: "60s"
-    disableLoadbalancer: true
   k3s:
     extraArgs:
-      - arg: --no-deploy=traefik,servicelb,metrics-server
-        nodeFilters:
-          - server:*
       - arg: --kube-proxy-arg=conntrack-max-per-core=0
         nodeFilters:
           - server:*
