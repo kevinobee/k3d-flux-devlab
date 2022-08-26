@@ -6,6 +6,7 @@
         "kube",
         "kubeconfig",
         "Loadbalancer",
+        "minikube",
         "servicelb",
         "traefik"
     ]
