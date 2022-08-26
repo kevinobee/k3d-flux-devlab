@@ -29,4 +29,4 @@ jobs:
       - name: Network
         run: |
           docker network list
-          docker network inspect k3d-k3s-default
+          docker network inspect k3d-test-cluster-1
