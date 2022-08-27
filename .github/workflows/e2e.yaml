@@ -1,0 +1,72 @@
+name: e2e
+
+on:
+  workflow_dispatch:
+
+jobs:
+  k3d-flux-gitops-reconcile:
+    name: Flux GitOps end-to-end test
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Flux CLI
+        uses: fluxcd/flux2/action@main
+
+      - uses: AbsaOSS/k3d-action@v2
+        name: "Create single k3d Cluster"
+        with:
+          cluster-name: "test-cluster-1"
+          args: >-
+            --agents 1
+            --config=.github/workflows/assets/config.yaml
+
+      - name: Cluster info
+        run: |
+          kubectl cluster-info --context k3d-test-cluster-1
+
+      - name: Nodes
+        run: |
+          docker ps -a
+          kubectl config use-context k3d-test-cluster-1
+          kubectl get nodes -o wide
+
+      - name: Network
+        run: |
+          docker network list
+          docker network inspect k3d-test-cluster-1
+          docker network inspect k3d-test-cluster-1 -f '{{json .IPAM.Config}}'
+
+      - name: Pre-Install Checks
+        run: |
+          flux check --pre
+
+      - name: Install Flux
+        run: |
+          flux install
+
+      - name: Post-Install Checks
+        run: |
+          flux check
+
+      - name: Setup cluster reconciliation
+        run: |
+          flux create source git flux-system \
+          --url=${{ github.event.repository.html_url }} \
+          --branch=${GITHUB_REF#refs/heads/}
+          flux create kustomization flux-system \
+          --source=flux-system \
+          --path=./k8s/cluster/overlays/local
+
+      - name: Verify cluster reconciliation
+        run: |
+          kubectl -n flux-system wait kustomization/flux-system --for=condition=ready --timeout=5m
+
+      - name: Debug failure
+        if: failure()
+        run: |
+          kubectl -n flux-system get all
+          kubectl -n flux-system logs deploy/source-controller
+          kubectl -n flux-system logs deploy/kustomize-controller
+          kubectl -n flux-system logs deploy/helm-controller
+          flux get all --all-namespaces
