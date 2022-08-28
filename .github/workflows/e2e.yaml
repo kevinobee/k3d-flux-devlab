@@ -62,6 +62,10 @@ jobs:
         run: |
           kubectl -n flux-system wait kustomization/flux-system --for=condition=ready --timeout=5m
 
+      - name: View cluster reconciliation structure
+        run: |
+          flux tree kustomization flux-system --compact
+
       - name: Debug failure
         if: failure()
         run: |
