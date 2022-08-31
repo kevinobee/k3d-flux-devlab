@@ -20,24 +20,24 @@ brew install fluxcd/tap/flux    # Install the Flux CLI
 ## Getting Started
 
 ```shell
-# Create single k3d Cluster
+# Create k3d cluster
 k3d cluster create --config .github/workflows/assets/config.yaml
 kubectl cluster-info
 
 # Install Flux
 flux check --pre
-kubectl apply -f ./k8s/cluster/flux-system/gotk-components.yaml     # equiv. to: flux install
+flux install
 flux check
 
-# Apply flux-system kustomization
+# Apply cluster manifests
 kubectl apply -k ./k8s/cluster/flux-system
-flux tree kustomization flux-system --compact
 
-# Verify cluster reconciliation
+# Wait for cluster reconciliation
 kubectl -n flux-system wait kustomization/flux-system --for=condition=ready --timeout=5m
 kubectl -n flux-system wait kustomization/infrastructure --for=condition=ready --timeout=5m
 kubectl -n flux-system wait kustomization/apps --for=condition=ready --timeout=5m
 kubectl -n flux-system wait kustomization/tools --for=condition=ready --timeout=5m
+kubectl -n podinfo wait kustomization/podinfo --for=condition=ready --timeout=5m
 
 # View cluster structure
 flux tree kustomization flux-system --compact
