@@ -2,17 +2,22 @@
     "cSpell.words": [
         "AbsaOSS",
         "conntrack",
+        "finalizers",
         "fluxcd",
         "gitops",
+        "gotk",
         "helmrelease",
         "inercia",
         "IPAM",
         "kube",
         "kubeconfig",
         "kustomization",
+        "linkerd",
         "Loadbalancer",
         "minikube",
+        "podinfo",
         "servicelb",
-        "traefik"
+        "traefik",
+        "trivy"
     ]
 }

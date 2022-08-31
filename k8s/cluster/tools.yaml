@@ -1,0 +1,16 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: tools
+  namespace: flux-system
+spec:
+  interval:  1h0m0s
+  path: ./k8s/tools
+  dependsOn:
+    - name: finalizers
+  prune: true
+  timeout: 10m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

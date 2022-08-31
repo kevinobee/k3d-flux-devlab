@@ -1,0 +1,24 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: podinfo-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+spec:
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: podinfo
+      port:
+        number: 9898
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/podinfo"
+        backend:
+          service:
+            name: podinfo
+            port:
+              number: 9898
