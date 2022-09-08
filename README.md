@@ -4,7 +4,10 @@ Demo of Flux CD maintaining a local [K3D](https://k3d.io/) cluster for developer
 
 ## Pre-Requisites
 
+The following tools need to be install on your machine:
+
 * [Docker](https://www.docker.com/)
+* [jq]
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/)
 * [Homebrew](https://brew.sh/)
 
@@ -14,7 +17,8 @@ From a terminal run the following commands to install the CLI tools required for
 
 ```shell
 brew install k3d                # Install K3D CLI
-brew install fluxcd/tap/flux    # Install the Flux CLI
+brew install fluxcd/tap/flux    # Install Flux CLI
+brew install jq                 # Install jq
 ```
 
 ## Getting Started
@@ -41,4 +45,8 @@ kubectl -n podinfo wait kustomization/podinfo --for=condition=ready --timeout=5m
 
 # View cluster structure
 flux tree kustomization flux-system --compact
+
+IP=$(kubectl get svc traefik -n kube-system -o json | jq -j '.status.loadBalancer.ingress[].ip')
+echo "http://$IP"
+
 ```

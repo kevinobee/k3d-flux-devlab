@@ -2,10 +2,12 @@
     "cSpell.words": [
         "AbsaOSS",
         "conntrack",
+        "crds",
         "finalizers",
         "fluxcd",
         "gitops",
         "gotk",
+        "Grafana",
         "helmrelease",
         "inercia",
         "IPAM",
