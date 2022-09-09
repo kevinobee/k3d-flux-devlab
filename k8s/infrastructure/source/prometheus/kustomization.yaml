@@ -10,5 +10,5 @@ generatorOptions:
   disableNameSuffixHash: true
 
 resources:
-  - monitoring-ns.yaml
+  - namespace.yaml
   - kube-prometheus-stack.yaml
