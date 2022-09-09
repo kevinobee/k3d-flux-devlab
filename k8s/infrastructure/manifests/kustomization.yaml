@@ -6,6 +6,7 @@ resources:
   - monitoring-ns.yaml
   - prometheus-community-repo.yaml
   - prometheus.yaml
+  - linkerd.yaml
   - finalizers.yaml
 
 namespace: flux-system
