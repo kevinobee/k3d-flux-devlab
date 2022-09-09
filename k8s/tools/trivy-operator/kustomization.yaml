@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - https://raw.githubusercontent.com/aquasecurity/trivy-operator/v0.1.0/deploy/static/trivy-operator.yaml
 
-patchesStrategicMerge:
-  - patches/inject-linkerd.yaml
+# patchesStrategicMerge:
+#   - patches/inject-linkerd.yaml
 
 namespace: trivy-system
