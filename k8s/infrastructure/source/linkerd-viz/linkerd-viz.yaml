@@ -1,0 +1,26 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: linkerd-viz
+  namespace: flux-system
+
+spec:
+  interval: 1h0m0s
+  timeout: 10m0s
+  targetNamespace: linkerd-viz
+  chart:
+    spec:
+      chart: linkerd-viz
+      version: 30.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: linkerd
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
+  values:
+    prometheus:
+      enabled: false
+    prometheusUrl: "http://monitoring-kube-prometheus-prometheus.default.svc.cluster.local:9090"

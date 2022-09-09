@@ -1,11 +1,15 @@
 {
     "cSpell.words": [
         "AbsaOSS",
+        "authorizationpolicies",
+        "authorizationpolicy",
         "conntrack",
+        "crds",
         "finalizers",
         "fluxcd",
         "gitops",
         "gotk",
+        "Grafana",
         "helmrelease",
         "inercia",
         "IPAM",
