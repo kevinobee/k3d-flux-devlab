@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   # namespaces
   - linkerd-viz-ns.yaml
-  - monitoring-ns.yaml
 
   # flux sources
   - linkerd-repo.yaml

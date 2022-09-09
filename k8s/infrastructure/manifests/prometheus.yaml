@@ -25,5 +25,8 @@ spec:
     prometheus:
       prometheusSpec:
         enableFeatures:
-        - remote-write-receiver
-        
+          - remote-write-receiver
+        additionalScrapeConfigs:
+          - name: additional-scrape-configs
+            key: additional-scraping.yaml
+            
