@@ -9,8 +9,8 @@ spec:
   prune: true
   dependsOn:
 #    - name: policy
-    # - name: linkerd
-   - name: cert-manager
+    - name: linkerd
+    - name: cert-manager
 #    - name: sealed-secrets
 #    - name: metallb
 #    - name: ingress-nginx

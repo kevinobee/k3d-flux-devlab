@@ -2,11 +2,20 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - cert-manager.yaml
+  # namespaces
+  - linkerd-viz-ns.yaml
   - monitoring-ns.yaml
+
+  # flux sources
+  - linkerd-repo.yaml
+  - linkerd-edge-repo.yaml
   - prometheus-community-repo.yaml
+
+  # flux workloads
+  - cert-manager.yaml
   - prometheus.yaml
   - linkerd.yaml
+  - linkerd-viz.yaml
   - finalizers.yaml
 
 namespace: flux-system

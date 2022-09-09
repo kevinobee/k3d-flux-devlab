@@ -16,9 +16,10 @@ The following tools need to be install on your machine:
 From a terminal run the following commands to install the CLI tools required for working with this repo:
 
 ```shell
-brew install k3d                # Install K3D CLI
+brew install k3d
 brew install fluxcd/tap/flux    # Install Flux CLI
-brew install jq                 # Install jq
+brew install jq
+brew install linkerd
 ```
 
 ## Getting Started
@@ -47,6 +48,13 @@ kubectl -n podinfo wait kustomization/podinfo --for=condition=ready --timeout=5m
 flux tree kustomization flux-system --compact
 
 IP=$(kubectl get svc traefik -n kube-system -o json | jq -j '.status.loadBalancer.ingress[].ip')
-echo "http://$IP"
+echo "Load Balancer IP: http://$IP"
 
+# Get the prometheus svc name
+PROM_SVC_NAME=$(kubectl get svc -l  app.kubernetes.io/instance=monitoring-kube-prometheus-stack,app=kube-prometheus-stack-prometheus -n monitoring -o json | jq -j '.items[].metadata.name')
+echo "$PROM_SVC_NAME"
+
+# Deploy Linkerd
+linkerd version
+linkerd check --pre
 ```
