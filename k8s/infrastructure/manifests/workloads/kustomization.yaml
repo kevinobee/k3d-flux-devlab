@@ -6,3 +6,4 @@ resources:
   - linkerd-viz.yaml
   - linkerd.yaml
   - prometheus.yaml
+  - open-telemetry.yaml
