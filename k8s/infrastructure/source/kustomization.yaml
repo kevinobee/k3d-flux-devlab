@@ -3,4 +3,7 @@ kind: Kustomization
 
 bases:
   - cert-manager/
-  - finalizers
+  - linkerd/
+  - linkerd-viz/
+  - prometheus/
+  - finalizers/

@@ -8,13 +8,10 @@ spec:
   path: ./k8s/infrastructure/source/finalizers
   prune: true
   dependsOn:
-#    - name: policy
+    - name: prometheus
     - name: linkerd
+    - name: linkerd-viz
     - name: cert-manager
-#    - name: sealed-secrets
-#    - name: metallb
-#    - name: ingress-nginx
-#    - name: observability
   sourceRef:
     kind: GitRepository
     name: flux-system

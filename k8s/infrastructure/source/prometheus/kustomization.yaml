@@ -11,3 +11,4 @@ generatorOptions:
 
 resources:
   - monitoring-ns.yaml
+  - kube-prometheus-stack.yaml
