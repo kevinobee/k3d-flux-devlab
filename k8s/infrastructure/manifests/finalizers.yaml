@@ -7,10 +7,10 @@ spec:
   interval: 1h0m0s
   path: ./k8s/infrastructure/source/finalizers
   prune: true
-  # dependsOn:
+  dependsOn:
 #    - name: policy
     # - name: linkerd
-#    - name: cert-manager
+   - name: cert-manager
 #    - name: sealed-secrets
 #    - name: metallb
 #    - name: ingress-nginx
