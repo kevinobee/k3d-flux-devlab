@@ -1,7 +1,10 @@
 {
     "cSpell.words": [
         "AbsaOSS",
+        "Anson",
+        "azuretools",
         "conntrack",
+        "crds",
         "finalizers",
         "fluxcd",
         "gitops",
@@ -18,6 +21,7 @@
         "podinfo",
         "servicelb",
         "traefik",
-        "trivy"
+        "trivy",
+        "Weaveworks"
     ]
 }
