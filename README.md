@@ -20,8 +20,24 @@ To get the load balancer ingress IP run the following command:
 ```shell
 echo "http://$(kubectl get svc traefik -n kube-system -o json | jq -j '.status.loadBalancer.ingress[].ip')"
 ```
+
+### Add a Service Mesh
+
+To optionally add the Linkerd service mesh to the cluster run the following commands:
+
+```shell
+linkerd install --crds | kubectl apply -f -
+linkerd install | kubectl apply -f -
+linkerd check
 ```
 
+Install and start the Linkerd dashboard with the following commands:
+
+```shell
+linkerd viz install | kubectl apply -f -
+linkerd check
+linkerd viz dashboard &
+```
 
 ### Cleanup
 
