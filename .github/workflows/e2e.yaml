@@ -19,7 +19,6 @@ jobs:
           cluster-name: "test-cluster-1"
           args: >-
             --agents 1
-            --config=.github/workflows/assets/config.yaml
 
       - name: Cluster info
         run: |
