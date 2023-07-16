@@ -1,19 +1,17 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-commonLabels:
-  app: podinfo
-  tier: application
-
-bases:
-  - github.com/stefanprodan/podinfo//kustomize
-
 resources:
-  - namespace.yaml
-  - ingress.yaml
-  - sync.yaml
-
-patchesStrategicMerge:
-  - patches/security-context.yaml
+- namespace.yaml
+- ingress.yaml
+- sync.yaml
+- github.com/stefanprodan/podinfo//kustomize
 
 namespace: podinfo
+labels:
+- includeSelectors: true
+  pairs:
+    app: podinfo
+    tier: application
+patches:
+- path: patches/security-context.yaml

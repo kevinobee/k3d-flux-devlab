@@ -4,8 +4,10 @@ kind: Kustomization
 commonAnnotations:
   linkerd.io/inject: enabled
 
-commonLabels:
-  tier: application
 
-bases:
-  - podinfo
+resources:
+- podinfo
+labels:
+- includeSelectors: true
+  pairs:
+    tier: application
