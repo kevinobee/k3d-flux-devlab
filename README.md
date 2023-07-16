@@ -39,6 +39,23 @@ linkerd check
 linkerd viz dashboard &
 ```
 
+### Observability
+
+To access the Grafana dashboard, you need to forward traffic to the Grafana server. To do so, run the following commands:
+
+```shell
+kubectl -n monitoring port-forward svc/kube-prometheus-stack-grafana 3001:80
+```
+
+To log in to your Grafana Dashboard, you should use the default credentials for the kube-Prometheus-stack.
+
+```text
+Username: admin
+Password: prom-operator 
+```
+
+To view the Flux Cluster Stats browse to <http://127.0.0.1:3001/d/flux-cluster/flux-cluster-stats>
+
 ### Cleanup
 
 To clean up the environment run ```k3d cluster delete```

@@ -12,7 +12,8 @@
 		"ghcr.io/rio/features/k9s:1": {},
 		"ghcr.io/devcontainers-contrib/features/linkerd2-cli-stable:1": {},
 		"ghcr.io/eitsupi/devcontainer-features/jq-likes:1": {},
-		"ghcr.io/rjfmachado/devcontainer-features/cloud-native:1": {}
+		"ghcr.io/rjfmachado/devcontainer-features/cloud-native:1": {},
+		"ghcr.io/rio/features/kustomize:1": {}
 	},
 
 	"customizations": {
@@ -23,7 +24,8 @@
 				"redhat.vscode-yaml",
 				"inercia.vscode-k3d",
 				"Weaveworks.vscode-gitops-tools",
-				"DavidAnson.vscode-markdownlint"
+				"DavidAnson.vscode-markdownlint",
+				"ShaiMendel.kubernetesapply"
 			]
 	}
 	},
