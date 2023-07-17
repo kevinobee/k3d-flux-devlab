@@ -5,7 +5,7 @@ metadata:
   name: finalizers
 spec:
   interval: 1h0m0s
-  path: ./k8s/infrastructure/source/finalizers
+  path: ./k8s/infrastructure/sources/finalizers
   prune: true
   dependsOn:
    - name: kube-prometheus-stack
