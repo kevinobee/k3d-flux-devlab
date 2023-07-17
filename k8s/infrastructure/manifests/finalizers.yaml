@@ -8,8 +8,9 @@ spec:
   path: ./k8s/infrastructure/sources/finalizers
   prune: true
   dependsOn:
-   - name: kube-prometheus-stack
-   - name: monitoring-config
+  - name: linkerd
+  - name: kube-prometheus-stack
+  - name: monitoring-config
   sourceRef:
     kind: GitRepository
     name: flux-system

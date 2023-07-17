@@ -4,7 +4,6 @@ kind: Kustomization
 commonAnnotations:
   linkerd.io/inject: enabled
 
-
 resources:
 - podinfo
 labels:
