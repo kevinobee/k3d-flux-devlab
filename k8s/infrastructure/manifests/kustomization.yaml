@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - linkerd.yaml
+  - linkerd-viz.yaml
   - kube-prometheus-stack.yaml
   - monitoring-config.yaml
   - finalizers.yaml
